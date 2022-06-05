@@ -6,7 +6,7 @@
 
   <groupId>com.seepine</groupId>
   <artifactId>spring-boot-dependencies</artifactId>
-  <version>2.7.0</version>
+  <version>2.7.0.v1</version>
 
   <name>spring-boot-dependencies</name>
   <packaging>pom</packaging>
@@ -61,10 +61,29 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
+      <!--权限控制-->
+      <dependency>
+        <groupId>com.seepine</groupId>
+        <artifactId>auth-spring-boot-starter</artifactId>
+        <version>${auth.version}</version>
+      </dependency>
+      <!--统一返回-->
+      <dependency>
+        <groupId>com.seepine</groupId>
+        <artifactId>wrap-spring-boot-starter</artifactId>
+        <version>${wrap.version}</version>
+      </dependency>
+      <!--微信小程序-->
       <dependency>
         <groupId>com.seepine</groupId>
         <artifactId>wechat-spring-boot-starter</artifactId>
         <version>${we-chat.version}</version>
+      </dependency>
+      <!-- 集合了mybatis、mybatisPlus、多租户、数组映射等 -->
+      <dependency>
+        <groupId>com.seepine</groupId>
+        <artifactId>mybatis-spring-boot-starter</artifactId>
+        <version>${mybatis.version}</version>
       </dependency>
       <!--huTool -->
       <dependency>
@@ -83,18 +102,6 @@
         <groupId>cn.hutool</groupId>
         <artifactId>hutool-crypto</artifactId>
         <version>${hutool.version}</version>
-      </dependency>
-      <!--权限控制-->
-      <dependency>
-        <groupId>com.seepine</groupId>
-        <artifactId>spring-boot-starter-auth</artifactId>
-        <version>${auth.version}</version>
-      </dependency>
-      <!--统一返回-->
-      <dependency>
-        <groupId>com.seepine</groupId>
-        <artifactId>spring-boot-starter-wrap</artifactId>
-        <version>${wrap.version}</version>
       </dependency>
       <!--redisson-->
       <dependency>
@@ -119,12 +126,6 @@
         <groupId>com.alibaba</groupId>
         <artifactId>druid-spring-boot-starter</artifactId>
         <version>${druid.version}</version>
-      </dependency>
-      <!-- 集合了mybatis、mybatisPlus、多租户、数组映射等 -->
-      <dependency>
-        <groupId>com.seepine</groupId>
-        <artifactId>mybatis-spring-boot-starter</artifactId>
-        <version>${mybatis.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
