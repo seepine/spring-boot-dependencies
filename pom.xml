@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.seepine</groupId>
+  <artifactId>spring-boot-dependencies</artifactId>
+  <version>2.7.0</version>
+
+  <name>spring-boot-dependencies</name>
+  <packaging>pom</packaging>
+  <description>Spring Boot Dependencies</description>
+  <url>https://github.com/seepine/spring-boot-dependencies</url>
+
+  <properties>
+    <spring-boot.version>2.7.0</spring-boot.version>
+
+    <mybatis-plus.version>3.5.2</mybatis-plus.version>
+    <druid.version>1.2.8</druid.version>
+
+    <hutool.version>5.8.2</hutool.version>
+    <redisson.version>3.17.3</redisson.version>
+
+    <auth.version>2.0.1</auth.version>
+    <wrap.version>0.4.0</wrap.version>
+    <we-chat.version>1.4.0-alpha</we-chat.version>
+
+    <mybatis.version>0.0.4</mybatis.version>
+  </properties>
+
+  <!--author-->
+  <developers>
+    <developer>
+      <name>seepine</name>
+      <email>seepine@outlook.com</email>
+      <url>https://seepine.com</url>
+    </developer>
+  </developers>
+  <!--licenses-->
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <!--scm-->
+  <scm>
+    <url>https://seepine.com</url>
+    <connection>scm:git:https://github.com/seepine/spring-boot-dependencies.git</connection>
+    <developerConnection>scm:git:https://github.com/seepine/spring-boot-dependencies.git</developerConnection>
+  </scm>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring-boot.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.seepine</groupId>
+        <artifactId>wechat-spring-boot-starter</artifactId>
+        <version>${we-chat.version}</version>
+      </dependency>
+      <!--huTool -->
+      <dependency>
+        <groupId>cn.hutool</groupId>
+        <artifactId>hutool-all</artifactId>
+        <version>${hutool.version}</version>
+      </dependency>
+      <!--huTool -->
+      <dependency>
+        <groupId>cn.hutool</groupId>
+        <artifactId>hutool-core</artifactId>
+        <version>${hutool.version}</version>
+      </dependency>
+      <!--huTool -->
+      <dependency>
+        <groupId>cn.hutool</groupId>
+        <artifactId>hutool-crypto</artifactId>
+        <version>${hutool.version}</version>
+      </dependency>
+      <!--权限控制-->
+      <dependency>
+        <groupId>com.seepine</groupId>
+        <artifactId>spring-boot-starter-auth</artifactId>
+        <version>${auth.version}</version>
+      </dependency>
+      <!--统一返回-->
+      <dependency>
+        <groupId>com.seepine</groupId>
+        <artifactId>spring-boot-starter-wrap</artifactId>
+        <version>${wrap.version}</version>
+      </dependency>
+      <!--redisson-->
+      <dependency>
+        <groupId>org.redisson</groupId>
+        <artifactId>redisson-spring-boot-starter</artifactId>
+        <version>${redisson.version}</version>
+      </dependency>
+      <!-- mybatis-plus -->
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-boot-starter</artifactId>
+        <version>${mybatis-plus.version}</version>
+      </dependency>
+      <!-- mybatis-plus-extension -->
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-extension</artifactId>
+        <version>${mybatis-plus.version}</version>
+      </dependency>
+      <!-- druid 连接池 -->
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>druid-spring-boot-starter</artifactId>
+        <version>${druid.version}</version>
+      </dependency>
+      <!-- 集合了mybatis、mybatisPlus、多租户、数组映射等 -->
+      <dependency>
+        <groupId>com.seepine</groupId>
+        <artifactId>mybatis-spring-boot-starter</artifactId>
+        <version>${mybatis.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
+          <configuration>
+            <!--分层，适配docker分层打包-->
+            <layers>
+              <enabled>true</enabled>
+            </layers>
+            <excludes>
+              <exclude>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+              </exclude>
+            </excludes>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <plugins>
+      <!-- doc plugin,Maven API文档生成插件-->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.1.0</version>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <!-- resources plugin,Maven 资源插件-->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>3.1.0</version>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar-no-fork</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <!-- compiler plugin,Maven 编译插件 -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.3</version>
+        <configuration>
+          <source>${java.version}</source>
+          <target>${java.version}</target>
+          <showWarnings>true</showWarnings>
+        </configuration>
+      </plugin>
+      <!-- gpg plugin,用于签名认证 -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-gpg-plugin</artifactId>
+        <version>1.6</version>
+        <executions>
+          <execution>
+            <id>sign-artifacts</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>sign</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <!--staging puglin,用于自动执行发布阶段(免手动)-->
+      <plugin>
+        <groupId>org.sonatype.plugins</groupId>
+        <artifactId>nexus-staging-maven-plugin</artifactId>
+        <version>1.6.7</version>
+        <extensions>true</extensions>
+        <configuration>
+          <serverId>sonatype</serverId>
+          <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+          <autoReleaseAfterClose>true</autoReleaseAfterClose>
+        </configuration>
+      </plugin>
+      <!-- release plugin,用于发布到release仓库部署插件 -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-release-plugin</artifactId>
+        <version>2.4.2</version>
+      </plugin>
+    </plugins>
+  </build>
+  <!-- 引入 Settings.xml 中设置的sonatype -->
+  <distributionManagement>
+    <snapshotRepository>
+      <id>sonatype</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+    <repository>
+      <id>sonatype</id>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+  </distributionManagement>
+</project>
