@@ -10,11 +10,15 @@
 
 ```xml
 
-<dependencys>
-  <dependency>
-    <groupId>com.seepine</groupId>
-    <artifactId>spring-boot-dependencies</artifactId>
-    <version>${LatestVersion}</version>
-  </dependency>
-</dependencys>
+<dependencyManagement>
+  <dependencies>
+    <dependency>
+      <groupId>com.seepine</groupId>
+      <artifactId>spring-boot-dependencies</artifactId>
+      <version>${latest.version}</version>
+      <type>pom</type>
+      <scope>import</scope>
+    </dependency>
+  </dependencies>
+</dependencyManagement>
 ```
