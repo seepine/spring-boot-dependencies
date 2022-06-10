@@ -6,7 +6,7 @@
 
   <groupId>com.seepine</groupId>
   <artifactId>spring-boot-dependencies</artifactId>
-  <version>2.7.0.v3</version>
+  <version>3.0.0</version>
 
   <name>spring-boot-dependencies</name>
   <packaging>pom</packaging>
@@ -14,18 +14,15 @@
   <url>https://github.com/seepine/spring-boot-dependencies</url>
 
   <properties>
-    <spring-boot.version>2.7.0</spring-boot.version>
-
     <mybatis-plus.version>3.5.2</mybatis-plus.version>
     <druid.version>1.2.8</druid.version>
 
     <hutool.version>5.8.2</hutool.version>
     <redisson.version>3.17.3</redisson.version>
-
+    <!-- seepine dependencies -->
     <auth.version>2.0.1</auth.version>
-    <wrap.version>0.4.0</wrap.version>
+    <wrap.version>0.4.1</wrap.version>
     <we-chat.version>1.4.0-alpha</we-chat.version>
-
     <mybatis.version>0.0.4</mybatis.version>
   </properties>
 
@@ -47,20 +44,13 @@
   </licenses>
   <!--scm-->
   <scm>
-    <url>https://seepine.com</url>
+    <url>https://github.com/seepine/spring-boot-dependencies</url>
     <connection>scm:git:https://github.com/seepine/spring-boot-dependencies.git</connection>
     <developerConnection>scm:git:https://github.com/seepine/spring-boot-dependencies.git</developerConnection>
   </scm>
 
   <dependencyManagement>
     <dependencies>
-      <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-dependencies</artifactId>
-        <version>${spring-boot.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
       <!--权限控制-->
       <dependency>
         <groupId>com.seepine</groupId>
@@ -134,40 +124,6 @@
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-        <version>3.2.1</version>
-        <inherited>false</inherited>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>jar-no-fork</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <version>3.3.0</version>
-        <inherited>false</inherited>
-        <configuration>
-          <nohelp>true</nohelp>
-          <charset>UTF-8</charset>
-          <encoding>UTF-8</encoding>
-          <docencoding>UTF-8</docencoding>
-        </configuration>
-        <executions>
-          <execution>
-            <phase>compile</phase>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-gpg-plugin</artifactId>
         <version>1.6</version>
         <inherited>false</inherited>
@@ -199,7 +155,6 @@
           <autoReleaseAfterClose>true</autoReleaseAfterClose>
         </configuration>
       </plugin>
-      <!-- release plugin,用于发布到release仓库部署插件 -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-release-plugin</artifactId>
